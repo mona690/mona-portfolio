@@ -8,7 +8,7 @@ Single-page portfolio for GitHub Pages.
 2. Upload the contents of this folder so that **`index.html` is at the repository root** (same level as this README).
 3. On GitHub: **Settings → Pages → Build and deployment → Source**: choose **Deploy from a branch**.
 4. Set **Branch** to `main` (or `master`) and folder **`/ (root)`**, then save.
-5. After a minute, the site will be at `https://<your-username>.github.io/<repo-name>/`.
+5. After a minute, the site will be live (this repo): **https://mona690.github.io/mona-portfolio/**
 
 ### Custom domain (optional)
 
@@ -22,6 +22,6 @@ Open `index.html` in your browser, or run a small static server from this folder
 npx --yes serve .
 ```
 
-## Note on “Highlighted builds”
+## Content layout
 
-POS System, ERP System, and Cooking Up Good Speech match the descriptions on **page 2** of the CV PDF. Add store or demo links in `index.html` when you have public URLs.
+**Featured — live projects** in `index.html` are the main spotlight (store / live URLs). **Other builds (CV)** lists POS, ERP, and Cooking Up Good Speech as résumé blurbs; add links there when you have public demos or listings.
