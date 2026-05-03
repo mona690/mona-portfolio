@@ -168,46 +168,56 @@
       font-size: 1rem;
       padding: 0.55rem 1.1rem;
     }
-    /* Skills: single column, spaced rows, stagger when card appears */
-    ul.skills {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      color: var(--text);
+    /* Skills: one animated row each (scroll in one by one) */
+    .skills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      max-width: 42rem;
     }
-    ul.skills li {
+    .skill-line {
       position: relative;
-      padding: 0.85rem 0 0.85rem 1.35rem;
-      border-bottom: 1px solid var(--border);
-      font-size: clamp(1.02rem, 2vw, 1.12rem);
-      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1rem 1.15rem 1rem 1.1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #151c28 0%, #121822 100%);
+      font-size: clamp(1.02rem, 2vw, 1.14rem);
+      line-height: 1.45;
+      color: var(--text);
+      overflow: hidden;
+      transition:
+        opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.3s,
+        box-shadow 0.35s;
       opacity: 0;
-      transform: translateX(-16px);
-      transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(28px) scale(0.98);
     }
-    ul.skills li:last-child { border-bottom: none; }
-    ul.skills li::before {
+    .skill-line::before {
       content: "";
-      position: absolute;
-      left: 0;
-      top: 1.15rem;
-      width: 7px;
-      height: 7px;
+      flex: 0 0 8px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 12px rgba(94, 234, 212, 0.45);
+      box-shadow: 0 0 14px rgba(94, 234, 212, 0.55);
+      animation: pulse-dot 2.2s ease-in-out infinite;
     }
-    .card.is-visible ul.skills li {
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.25); opacity: 0.75; }
+    }
+    .skill-line.is-visible {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0) scale(1);
     }
-    .card.is-visible ul.skills li:nth-child(1) { transition-delay: 0.05s; }
-    .card.is-visible ul.skills li:nth-child(2) { transition-delay: 0.11s; }
-    .card.is-visible ul.skills li:nth-child(3) { transition-delay: 0.17s; }
-    .card.is-visible ul.skills li:nth-child(4) { transition-delay: 0.23s; }
-    .card.is-visible ul.skills li:nth-child(5) { transition-delay: 0.29s; }
-    .card.is-visible ul.skills li:nth-child(6) { transition-delay: 0.35s; }
-    .card.is-visible ul.skills li:nth-child(7) { transition-delay: 0.41s; }
+    .skill-line:hover {
+      border-color: #3d4f66;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+    }
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem 1.5rem;
@@ -222,7 +232,8 @@
       .card { transition: none; opacity: 1; transform: none; }
       .card:hover { transform: none; }
       .links a:hover { transform: none; box-shadow: none; }
-      ul.skills li { opacity: 1; transform: none; transition: none; }
+      .skill-line { opacity: 1; transform: none; transition: none; animation: none; }
+      .skill-line::before { animation: none; }
     }
   </style>
 </head>
@@ -312,16 +323,14 @@
     </section>
     <section id="skills">
       <h2>Skills</h2>
-      <div class="card reveal" data-reveal>
-        <ul class="skills">
-          <li>Flutter, Dart, cross-platform architecture</li>
-          <li>Clean Architecture, MVVM, Provider</li>
-          <li>REST, WebSockets, FCM</li>
-          <li>Firebase Analytics, Mixpanel</li>
-          <li>Next.js, React, TypeScript, Tailwind (collaboration)</li>
-          <li>Git, CI/CD awareness, Agile / Scrum</li>
-          <li>Google Play Console, App Store Connect</li>
-        </ul>
+      <div class="skills-list">
+        <div class="skill-line reveal" data-reveal>Flutter, Dart, cross-platform architecture</div>
+        <div class="skill-line reveal" data-reveal>Clean Architecture, MVVM, Provider</div>
+        <div class="skill-line reveal" data-reveal>REST, WebSockets, FCM</div>
+        <div class="skill-line reveal" data-reveal>Firebase Analytics, Mixpanel</div>
+        <div class="skill-line reveal" data-reveal>Next.js, React, TypeScript, Tailwind (collaboration)</div>
+        <div class="skill-line reveal" data-reveal>Git, CI/CD awareness, Agile / Scrum</div>
+        <div class="skill-line reveal" data-reveal>Google Play Console, App Store Connect</div>
       </div>
     </section>
     <section>
@@ -356,7 +365,7 @@
             if (!entry.isIntersecting) return;
             var el = entry.target;
             var row = el.parentElement ? el.parentElement : el;
-            var siblings = row.querySelectorAll(".card.reveal");
+            var siblings = row.querySelectorAll("[data-reveal]");
             var index = Array.prototype.indexOf.call(siblings, el);
             if (index < 0) index = 0;
             el.style.transitionDelay = Math.min(index * 0.07, 0.35) + "s";
