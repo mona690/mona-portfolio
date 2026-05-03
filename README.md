@@ -22,6 +22,6 @@ Open `index.html` in your browser, or run a small static server from this folder
 npx --yes serve .
 ```
 
-## Content layout
+## Content
 
-**Featured — live projects** in `index.html` are the main spotlight (store / live URLs). **Other builds (CV)** lists POS, ERP, and Cooking Up Good Speech as résumé blurbs; add links there when you have public demos or listings.
+All work samples live under a single **Projects** heading in `index.html`. Add buttons/links for POS, ERP, or Cooking Up Good Speech when you have public URLs.

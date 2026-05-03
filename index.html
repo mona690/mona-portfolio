@@ -116,14 +116,6 @@
     }
     .card.is-visible:hover { transform: translateY(-4px); }
     .card h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
-    .card .tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
     .card .meta { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.75rem; }
     .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
     .links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.85rem; }
@@ -138,62 +130,6 @@
     .links a:hover { border-color: var(--accent); text-decoration: none; background: #111920; }
     ul.skills { margin: 0; padding-left: 1.1rem; color: var(--muted); columns: 1; }
     @media (min-width: 720px) { ul.skills { columns: 2; } }
-    .section-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .section-head small { color: var(--muted); font-size: 0.8rem; }
-    /* Featured = live projects with public links */
-    section.section-featured h2 {
-      color: var(--text);
-      letter-spacing: 0.06em;
-    }
-    section.section-featured h2 span.accent-line {
-      display: block;
-      width: 48px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      margin: 0.5rem 0 0;
-      border-radius: 2px;
-    }
-    .card-featured {
-      position: relative;
-      background: linear-gradient(145deg, #161d2a 0%, #121822 100%);
-      border: 1px solid #2d3b4f;
-      box-shadow: 0 0 0 1px rgba(94, 234, 212, 0.12), 0 16px 48px rgba(0, 0, 0, 0.35);
-    }
-    .card-featured::before {
-      content: "Live";
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      opacity: 0.95;
-    }
-    .card-featured h3 { font-size: 1.12rem; }
-    /* Secondary = CV-only blurbs, not the hero */
-    section.section-secondary h2 { color: var(--muted); }
-    .card-subtle {
-      background: #10151c;
-      border-color: #1a222e;
-      padding: 1rem 1.15rem;
-    }
-    .card-subtle h3 { font-size: 0.98rem; color: var(--text); }
-    .card-subtle .cv-note {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #64748b;
-      margin-bottom: 0.35rem;
-    }
-    .card-subtle p { font-size: 0.88rem; }
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem 1.5rem;
@@ -248,13 +184,10 @@
         </div>
       </div>
     </section>
-    <section class="section-featured">
-      <h2>Featured — live projects<span class="accent-line" aria-hidden="true"></span></h2>
-      <p style="color: var(--muted); margin: -0.25rem 0 1.25rem; font-size: 0.95rem;">
-        Shipped work with public store or web links.
-      </p>
+    <section>
+      <h2>Projects</h2>
       <div class="grid grid-2">
-        <div class="card card-featured reveal" data-reveal>
+        <div class="card reveal" data-reveal>
           <h3>RawV Vendor</h3>
           <p>Quotation, pricing, and auction flows with real-time updates.</p>
           <div class="links">
@@ -262,49 +195,38 @@
             <a href="https://apps.apple.com/eg/app/rawv/id6748069210" target="_blank" rel="noopener">App Store</a>
           </div>
         </div>
-        <div class="card card-featured reveal" data-reveal>
+        <div class="card reveal" data-reveal>
           <h3>Bonood</h3>
           <p>Business-facing web modules.</p>
           <div class="links">
             <a href="https://bonood.rawmartapp.com" target="_blank" rel="noopener">Live site</a>
           </div>
         </div>
-        <div class="card card-featured reveal" data-reveal>
+        <div class="card reveal" data-reveal>
           <h3>Tanfeez</h3>
           <p>Operations &amp; product workflows with backend integration.</p>
           <div class="links">
             <a href="https://tanfeez.rawmartapp.com" target="_blank" rel="noopener">Live site</a>
           </div>
         </div>
-        <div class="card card-featured reveal" data-reveal>
+        <div class="card reveal" data-reveal>
           <h3>Viki RawPlus</h3>
           <p>Enterprise-style modules and data-heavy UI.</p>
           <div class="links">
             <a href="https://viki.rawmartapp.com" target="_blank" rel="noopener">Live site</a>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="section-secondary">
-      <div class="section-head">
-        <h2>Other builds (CV)</h2>
-        <small>Same blurbs as résumé page 2 — add links when you have a public demo or listing.</small>
-      </div>
-      <div class="grid">
-        <div class="card card-subtle reveal" data-reveal>
-          <div class="cv-note">Mobile · Real-time</div>
+        <div class="card reveal" data-reveal>
           <h3>POS System</h3>
           <p>Mobile point-of-sale workflows with real-time updates.</p>
         </div>
-        <div class="card card-subtle reveal" data-reveal>
-          <div class="cv-note">ERP · Collaboration</div>
+        <div class="card reveal" data-reveal>
           <h3>ERP System</h3>
           <p>Project management, messaging, and live progress tracking.</p>
         </div>
-        <div class="card card-subtle reveal" data-reveal>
-          <div class="cv-note">Flutter · Firebase</div>
+        <div class="card reveal" data-reveal>
           <h3>Cooking Up Good Speech</h3>
-          <p>App supporting children with speech disorders — Flutter and Firebase.</p>
+          <p>Flutter and Firebase app supporting children with speech disorders.</p>
         </div>
       </div>
     </section>
